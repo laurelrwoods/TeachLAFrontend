@@ -1,5 +1,6 @@
 import React from "react";
 import EditorContainer from "./Editor/containers/EditorContainer";
+import ClassesPageContainer from "./Classes/containers/ClassesContainer";
 import SketchesPageContainer from "./Sketches/containers/SketchesContainer";
 // Specify imports for codemirror usage
 import "../styles/Main.css";
@@ -32,12 +33,16 @@ class Editor extends React.Component {
 
   componentWillUnmount() {}
 
+  renderClassesPage = () => <ClassesPageContainer />;
+
   renderSketchesPage = () => <SketchesPageContainer />;
 
   renderEditor = () => <EditorContainer />;
 
   renderContent = () => {
     switch (this.props.contentType) {
+      case "classes":
+        return this.renderClassesPage();
       case "sketches":
         return this.renderSketchesPage();
       case "editor":
